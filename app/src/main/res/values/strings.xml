@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">TrackYourVehicle</string>
+    <string name="string1">Payload </string>
+
+    <string name="string2">OJ Pay load </string>
+
+    <string name="string3">RJ pay load </string>
+    <string name="string4">Distance with load OJ</string>
+
+    <string name="string5">Distance with load RJ</string>
+    <string name="string6">Distance without load </string>
+    <string name="string7">Number of trips per month </string>
+    <string name="string8">Operative month </string>
+    <string name="string9">Mileage with load OJ </string>
+    <string name="string10">Mileage with load RJ </string>
+    <string name="string11">Mileage without load </string>
+    <string name="string12">Fuel price </string>
+    <string name="string13">Vehicle price </string>
+    <string name="string14">Body build cost </string>
+    <string name="string15">Tenure in month </string>
+    <string name="string16">Interest rate </string>
+    <string name="string17">Freight rate per ton per km forward journey </string>
+    <string name="string18">Freight rate per ton per km return journey </string>
+
+
+</resources>
