@@ -3,6 +3,7 @@ package com.example.mukesh.trackyourvehicle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +26,25 @@ public class MainActivity extends AppCompatActivity {
             17.	Freight rate per ton per km forward journey – Manual entry – Rs.0.00
             18.	Freight rate per ton per km return journey – Manual entry – Rs.0.00
 */
+    private EditText et_payload_one ,et_payload_two;
+    private EditText et_OJPay_one ,et_OJPay_two;
+    private EditText et_RJPay_one ,et_RJPay_two;
+    private EditText et_distance_with_loadOJ_one ,et_distance_with_loadOJ_two;
+    private EditText et_distance_with_loadRJ_one ,et_distance_with_loadRJ_two;
+    private EditText et_distance_withoutLoad_one ,et_distance_withoutLoad_two;
+    private EditText et_tripPerMonth_one ,et_tripPerMonth_two;
+    private EditText et_operativeMonth_one ,et_operativeMonth_two;
+    private EditText et_Mileage_With_Load_OJ_one ,et_Mileage_With_Load_OJ_two;
+    private EditText et_Mileage_With_Load_RJ_one ,et_Mileage_With_Load_RJ_two;
+    private EditText et_Mileage_Without_Load_one ,et_Mileage_Without_Load_two;
+    private EditText et_FuelPrice_one ,et_FuelPrice_two;
+    private EditText et_VehiclePrice_one ,et_VehiclePrice_two;
+    private EditText et_body_build_cost_one ,et_body_build_cost_two;
+    private EditText et_tenure_in_month_one ,et_tenure_in_month_two;
+    private EditText et_interest_rate_one ,et_interest_rate_two;
+    private EditText et_freight_rate_per_ton_per_km_forward_journey_one ,et_freight_rate_per_ton_per_km_forward_journey_two;
+    private EditText et_freight_rate_per_ton_per_km_return_journey_one ,et_freight_rate_per_ton_per_km_return_journey_two;
+
 
 
 
