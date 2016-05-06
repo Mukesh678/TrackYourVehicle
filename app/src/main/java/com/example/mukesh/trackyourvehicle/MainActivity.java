@@ -46,12 +46,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText et_freight_rate_per_ton_per_km_return_journey_one ,et_freight_rate_per_ton_per_km_return_journey_two;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("TEST","esp");
+
     }
 }
