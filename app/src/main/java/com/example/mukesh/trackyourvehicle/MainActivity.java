@@ -1,11 +1,19 @@
 package com.example.mukesh.trackyourvehicle;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnTextChanged;
+
+public class MainActivity extends AppCompatActivity
+{
 
    /* 1.	Payload in tons – Manual entry – 20.0 Tons
     2.	OJ Pay load – Manual entry – 20.0 Tons
@@ -26,31 +34,102 @@ public class MainActivity extends AppCompatActivity {
             17.	Freight rate per ton per km forward journey – Manual entry – Rs.0.00
             18.	Freight rate per ton per km return journey – Manual entry – Rs.0.00
 */
-    private EditText et_payload_one ,et_payload_two;
-    private EditText et_OJPay_one ,et_OJPay_two;
-    private EditText et_RJPay_one ,et_RJPay_two;
-    private EditText et_distance_with_loadOJ_one ,et_distance_with_loadOJ_two;
-    private EditText et_distance_with_loadRJ_one ,et_distance_with_loadRJ_two;
-    private EditText et_distance_withoutLoad_one ,et_distance_withoutLoad_two;
-    private EditText et_tripPerMonth_one ,et_tripPerMonth_two;
-    private EditText et_operativeMonth_one ,et_operativeMonth_two;
-    private EditText et_Mileage_With_Load_OJ_one ,et_Mileage_With_Load_OJ_two;
-    private EditText et_Mileage_With_Load_RJ_one ,et_Mileage_With_Load_RJ_two;
-    private EditText et_Mileage_Without_Load_one ,et_Mileage_Without_Load_two;
-    private EditText et_FuelPrice_one ,et_FuelPrice_two;
-    private EditText et_VehiclePrice_one ,et_VehiclePrice_two;
-    private EditText et_body_build_cost_one ,et_body_build_cost_two;
-    private EditText et_tenure_in_month_one ,et_tenure_in_month_two;
-    private EditText et_interest_rate_one ,et_interest_rate_two;
-    private EditText et_freight_rate_per_ton_per_km_forward_journey_one ,et_freight_rate_per_ton_per_km_forward_journey_two;
-    private EditText et_freight_rate_per_ton_per_km_return_journey_one ,et_freight_rate_per_ton_per_km_return_journey_two;
 
+
+
+    @BindView(R.id.et_payload_one)
+    EditText etPayloadOne;
+    @BindView(R.id.et_payload_two)
+    EditText etPayloadTwo;
+    @BindView(R.id.et_OJPay_one)
+    EditText etOJPayOne;
+    @BindView(R.id.et_OJPay_two)
+    EditText etOJPayTwo;
+    @BindView(R.id.et_RJPay_one)
+    EditText etRJPayOne;
+    @BindView(R.id.et_RJPay_two)
+    EditText etRJPayTwo;
+    @BindView(R.id.et_distance_with_loadOJ_one)
+    EditText etDistanceWithLoadOJOne;
+    @BindView(R.id.et_distance_with_loadOJ_two)
+    EditText etDistanceWithLoadOJTwo;
+    @BindView(R.id.et_distance_with_loadRJ_one)
+    EditText etDistanceWithLoadRJOne;
+    @BindView(R.id.et_distance_with_loadRJ_two)
+    EditText etDistanceWithLoadRJTwo;
+    @BindView(R.id.et_distance_withoutLoad_one)
+    EditText etDistanceWithoutLoadOne;
+    @BindView(R.id.et_distance_withoutLoad_two)
+    EditText etDistanceWithoutLoadTwo;
+    @BindView(R.id.et_tripPerMonth_one)
+    EditText etTripPerMonthOne;
+    @BindView(R.id.et_tripPerMonth_two)
+    EditText etTripPerMonthTwo;
+    @BindView(R.id.et_operativeMonth_one)
+    EditText etOperativeMonthOne;
+    @BindView(R.id.et_operativeMonth_two)
+    EditText etOperativeMonthTwo;
+    @BindView(R.id.et_Mileage_With_Load_OJ_one)
+    EditText etMileageWithLoadOJOne;
+    @BindView(R.id.et_Mileage_With_Load_OJ_two)
+    EditText etMileageWithLoadOJTwo;
+    @BindView(R.id.et_Mileage_With_Load_RJ_one)
+    EditText etMileageWithLoadRJOne;
+    @BindView(R.id.et_Mileage_With_Load_RJ_two)
+    EditText etMileageWithLoadRJTwo;
+    @BindView(R.id.et_Mileage_Without_Load_one)
+    EditText etMileageWithoutLoadOne;
+    @BindView(R.id.et_Mileage_Without_Load_two)
+    EditText etMileageWithoutLoadTwo;
+    @BindView(R.id.et_FuelPrice_one)
+    EditText etFuelPriceOne;
+    @BindView(R.id.et_FuelPrice_two)
+    EditText etFuelPriceTwo;
+    @BindView(R.id.et_VehiclePrice_one)
+    EditText etVehiclePriceOne;
+    @BindView(R.id.et_VehiclePrice_two)
+    EditText etVehiclePriceTwo;
+    @BindView(R.id.et_body_build_cost_one)
+    EditText etBodyBuildCostOne;
+    @BindView(R.id.et_body_build_cost_two)
+    EditText etBodyBuildCostTwo;
+    @BindView(R.id.et_tenure_in_month_one)
+    EditText etTenureInMonthOne;
+    @BindView(R.id.et_tenure_in_month_two)
+    EditText etTenureInMonthTwo;
+    @BindView(R.id.et_interest_rate_one)
+    EditText etInterestRateOne;
+    @BindView(R.id.et_interest_rate_two)
+    EditText etInterestRateTwo;
+    @BindView(R.id.et_freight_rate_per_ton_per_km_forward_journey_one)
+    EditText etFreightRatePerTonPerKmForwardJourneyOne;
+    @BindView(R.id.et_freight_rate_per_ton_per_km_forward_journey_two)
+    EditText etFreightRatePerTonPerKmForwardJourneyTwo;
+    @BindView(R.id.et_freight_rate_per_ton_per_km_return_journey_one)
+    EditText etFreightRatePerTonPerKmReturnJourneyOne;
+    @BindView(R.id.et_freight_rate_per_ton_per_km_return_journey_two)
+    EditText etFreightRatePerTonPerKmReturnJourneyTwo;
+    @BindView(R.id.btn_submit)
+    Button btn_submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("TEST","esp");
 
+        ButterKnife.bind(this);
+
+    }
+
+    @OnClick(R.id.btn_submit)
+    public void submit(View view )
+    {
+        Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @OnTextChanged({R.id.et_body_build_cost_one,R.id.et_body_build_cost_two})
+    public void onTextChanged(CharSequence text) {
+        Toast.makeText(this, "Text changed: " + text, Toast.LENGTH_SHORT).show();
     }
 }
