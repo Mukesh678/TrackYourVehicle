@@ -354,8 +354,7 @@
             app:layout_columnSpan="2"
             android:text="Submit" />
 
-
-
-
     </android.support.v7.widget.GridLayout>
+
+
 </ScrollView>
