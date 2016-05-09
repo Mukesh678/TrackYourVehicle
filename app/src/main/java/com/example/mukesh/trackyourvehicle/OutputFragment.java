@@ -13,6 +13,14 @@ import butterknife.ButterKnife;
  */
 public class OutputFragment extends BaseFragment {
 
+//    Result Page
+//
+//            1.	Increase in operating profit for 5 years = increase in Operating Profit x 5 – Rs.441814
+//            2.	Increase in Operating Profit per year = OP1 – OP2 – Rs.88363
+//            3.	Operating Profit per year = (Freight Earned per year) – (Operating Cost per year) – Rs.1967436
+//            4.	Operating Cost per year = Finance cost per year + Total running cost per year + Total fixed cost per year. - Rs.1967436
+
+
     private View view;
 
 
