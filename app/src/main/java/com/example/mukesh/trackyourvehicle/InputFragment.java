@@ -131,7 +131,7 @@ public class InputFragment extends BaseFragment {
     {
         if(view==null)
         {
-            view=inflater.inflate(R.layout.frag_display,container,false);
+            view=inflater.inflate(R.layout.frag_input,container,false);
             ButterKnife.bind(this,view);
 
         }
@@ -140,7 +140,7 @@ public class InputFragment extends BaseFragment {
 
 
     @OnClick(R.id.btn_submit)
-    public void submit(View view )
+    public void submit()
     {
         Toast.makeText(mActivity, "clicked", Toast.LENGTH_SHORT).show();
         calculateValues();
@@ -157,6 +157,7 @@ public class InputFragment extends BaseFragment {
     private int getNumber(EditText editText)
     {
         int number= Integer.parseInt(editText.getText().toString());
+
         return number;
     }
 
