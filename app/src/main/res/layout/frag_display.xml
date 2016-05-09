@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="7dp">
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:columnCount="3"
+        app:alignmentMode="alignBounds">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string1" />
+
+        <EditText
+            android:id="@+id/et_payload_one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint"
+            />
+
+        <EditText
+            android:id="@+id/et_payload_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string2" />
+
+        <EditText
+            android:id="@+id/et_OJPay_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_OJPay_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string3" />
+
+        <EditText
+            android:id="@+id/et_RJPay_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_RJPay_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string4" />
+
+        <EditText
+            android:id="@+id/et_distance_with_loadOJ_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_distance_with_loadOJ_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string5" />
+
+        <EditText
+            android:id="@+id/et_distance_with_loadRJ_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_distance_with_loadRJ_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string6" />
+
+        <EditText
+            android:id="@+id/et_distance_withoutLoad_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_distance_withoutLoad_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string7" />
+
+        <EditText
+            android:id="@+id/et_tripPerMonth_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_tripPerMonth_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string8" />
+
+        <EditText
+            android:id="@+id/et_operativeMonth_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_operativeMonth_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string9" />
+
+        <EditText
+            android:id="@+id/et_Mileage_With_Load_OJ_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_Mileage_With_Load_OJ_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string10" />
+
+        <EditText
+            android:id="@+id/et_Mileage_With_Load_RJ_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_Mileage_With_Load_RJ_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string11" />
+
+        <EditText
+            android:id="@+id/et_Mileage_Without_Load_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_Mileage_Without_Load_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string12" />
+
+        <EditText
+            android:id="@+id/et_FuelPrice_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_FuelPrice_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string13" />
+
+        <EditText
+            android:id="@+id/et_VehiclePrice_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_VehiclePrice_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string14" />
+
+        <EditText
+            android:id="@+id/et_body_build_cost_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_body_build_cost_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string15" />
+
+        <EditText
+            android:id="@+id/et_tenure_in_month_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_tenure_in_month_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string16" />
+
+        <EditText
+            android:id="@+id/et_interest_rate_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_interest_rate_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string17" />
+
+        <EditText
+            android:id="@+id/et_freight_rate_per_ton_per_km_forward_journey_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_freight_rate_per_ton_per_km_forward_journey_two"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string18" />
+
+        <EditText
+            android:id="@+id/et_freight_rate_per_ton_per_km_return_journey_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_freight_rate_per_ton_per_km_return_journey_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_gravity="fill_horizontal"
+            app:layout_columnWeight="1"
+            />
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_gravity="fill_horizontal"
+            app:layout_columnWeight="1"
+            android:text="Submit" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_gravity="fill_horizontal"
+            app:layout_columnWeight="1"
+            />
+
+    </android.support.v7.widget.GridLayout>
+
+
+</ScrollView>
