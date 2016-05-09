@@ -20,7 +20,7 @@ public class TripCalculate
     11.	Total load per trip = onward load + return load – 20.0 Tons
     12.	Total ton-km per year = [[(onward journey load x onward distance) + (return journey load x return distance)] x No of trips in month x No of months] - 1072500
     13.	Total freight earned per year = [(Freight rate per ton per km OJ x load OJ x OJ Distance with load) + (Freight rate per ton per km x Load RJ x RJ Distance with load)] x number of trips per year. – Rs.0.00
-
+    14. total distance per year=
     */
 
 

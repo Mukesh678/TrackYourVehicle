@@ -150,7 +150,22 @@ public class InputFragment extends BaseFragment {
     {
         total_trip_distance= TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithoutLoadOne));
         total_load_carried=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
-      //  cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(et)
+       /* cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(0.9,)
+        cost_running_year=TripCalculate.getRunningCostPerYear(getNumber(etFuelPriceOne),getNumber(etFuelPriceTwo));
+        cost_maintenance_year=TripCalculate.getMaintenanceCostPerYear();
+        distance_year=TripCalculate.getDiatancePerYear();
+        fuel_cost_year=TripCalculate.getFuelCostPerYear();
+        trip_mileage=TripCalculate.getTripMileage();
+        distance_month=TripCalculate.getDistancePerMonth();
+        payload_tons_year=TripCalculate.getPayLoadInTonsPerYear();
+        total_load_trip=TripCalculate.getTotalLoadPerTrip();
+        total_tons_km_year=TripCalculate.getTotalTonKmPerYear();
+        total_freight_earned_year=TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyOne),getNumber());
+        */
+
+
+
+
 
     }
 
