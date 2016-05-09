@@ -49,9 +49,9 @@ public class TripCalculate
     }
 
     //5
-    public static int getMaintenanceCostPerYear(int cost_maintenance_year,int total_distance_year)
+    public static int getMaintenanceCostPerYear(int cost_maintenance_km,int total_distance_year)
     {
-        return cost_maintenance_year * total_distance_year;
+        return cost_maintenance_km * total_distance_year;
     }
 
     //6

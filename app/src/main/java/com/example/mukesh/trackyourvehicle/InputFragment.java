@@ -117,7 +117,7 @@ public class InputFragment extends BaseFragment {
     @BindView(R.id.btn_submit)
     Button btn_submit;
 
-    private int total_trip_distance,total_load_carrie,cost_maintenance_km_year,cost_running_year,cost_maintenance_year,distance_year
+    private int total_trip_distance,total_load_carried,cost_maintenance_km_year,cost_running_year,cost_maintenance_year,distance_year
             ,fuel_cost_year,trip_mileage,distance_month,payload_tons_year,total_load_trip,total_tons_km_year,total_freight_earned_year;
     public static InputFragment newInstance() {
         InputFragment fragment = new InputFragment();
@@ -149,6 +149,9 @@ public class InputFragment extends BaseFragment {
     private void calculateValues()
     {
         total_trip_distance= TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithoutLoadOne));
+        total_load_carried=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
+//        cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(et)
+
     }
 
     private int getNumber(EditText editText)
