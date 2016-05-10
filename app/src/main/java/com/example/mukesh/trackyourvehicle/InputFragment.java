@@ -148,21 +148,26 @@ public class InputFragment extends BaseFragment {
 
     private void calculateValues()
     {
-        total_trip_distance= TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithoutLoadOne));
+       /* total_trip_distance= TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithoutLoadOne));
         total_load_carried=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
-       /* cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(0.9,)
+        cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(9,total_trip_distance);
         cost_running_year=TripCalculate.getRunningCostPerYear(getNumber(etFuelPriceOne),getNumber(etFuelPriceTwo));
-        cost_maintenance_year=TripCalculate.getMaintenanceCostPerYear();
-        distance_year=TripCalculate.getDiatancePerYear();
-        fuel_cost_year=TripCalculate.getFuelCostPerYear();
-        trip_mileage=TripCalculate.getTripMileage();
+        cost_maintenance_year=TripCalculate.getMaintenanceCostPerYear(cost_maintenance_km_year,total_trip_distance);
+        distance_year=TripCalculate.getDiatancePerYear(getNumber(etTripPerMonthOne),total_trip_distance);
+        fuel_cost_year=TripCalculate.getFuelCostPerYear(getNumber(etFuelPriceOne),total_trip_distance,getNumber(etTripPerMonthOne));
+
+        int milage_with_load=getNumber(etMileageWithLoadOJOne)+getNumber(etMileageWithLoadRJOne);
+        int trip_distance_with_load=total_trip_distance-getNumber(etDistanceWithoutLoadOne);
+
+        trip_mileage=TripCalculate.getTripMileage(total_trip_distance,trip_distance_with_load,milage_with_load,getNumber(etDistanceWithoutLoadOne),getNumber(etMileageWithoutLoadOne));
+
         distance_month=TripCalculate.getDistancePerMonth();
         payload_tons_year=TripCalculate.getPayLoadInTonsPerYear();
         total_load_trip=TripCalculate.getTotalLoadPerTrip();
         total_tons_km_year=TripCalculate.getTotalTonKmPerYear();
         total_freight_earned_year=TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyOne),getNumber());
-        */
 
+*/
 
 
 
