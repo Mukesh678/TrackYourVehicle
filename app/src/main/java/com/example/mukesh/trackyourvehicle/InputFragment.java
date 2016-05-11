@@ -148,6 +148,7 @@ public class InputFragment extends BaseFragment {
 
     private void calculateValues()
     {
+
        /* total_trip_distance= TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithoutLoadOne));
         total_load_carried=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
         cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(9,total_trip_distance);
