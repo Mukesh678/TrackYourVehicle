@@ -2,6 +2,7 @@ package com.example.mukesh.trackyourvehicle;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -147,11 +148,11 @@ public class InputFragment extends BaseFragment {
     public void submit()
     {
         Toast.makeText(mActivity, "clicked", Toast.LENGTH_SHORT).show();
+        calculateValues();
 try {
 
 }catch (Exception e){
-    calculateValues();
-
+e.printStackTrace();
 }
         Bundle bundle=new Bundle();
         bundle.putInt("total_trip_distance",total_trip_distance);
@@ -234,6 +235,22 @@ try {
         total_load_trip=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
         total_tons_km_year=TripCalculate.getTotalTonKmPerYear(getNumber(etOJPayOne),getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne),11);
         total_freight_earned_year=TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyOne),getNumber(etOJPayOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne),getNumber(etPayloadOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne)*11);
+
+        Log.i("total_trip_distance",total_trip_distance+"");
+        Log.i("total_load_carried",total_load_carried+"");
+        Log.i("cost_maintnce_km_year",cost_maintenance_km_year+"");
+        Log.i("cost_running_year",cost_running_year+"");
+        Log.i("cost_maintenance_year",cost_maintenance_year+"");
+        Log.i("distance_year",distance_year+"");
+        Log.i("fuel_cost_year",fuel_cost_year+"");
+        Log.i("trip_mileage",trip_mileage+"");
+        Log.i("distance_month",distance_month+"");
+        Log.i("payload_tons_year",payload_tons_year+"");
+        Log.i("total_load_trip",total_load_trip+"");
+        Log.i("total_tons_km_year",total_tons_km_year+"");
+        Log.i("total_freht_earned_year",total_freight_earned_year+"");
+
+
     }
 
     private int getNumber(EditText editText)
