@@ -26,6 +26,8 @@ public class OutputFragment extends BaseFragment {
 
     public static OutputFragment newInstance() {
         OutputFragment fragment = new OutputFragment();
+         Bundle output= fragment.getArguments();
+        int total_trip_distance=output.getInt("total_trip_distance");
         return fragment;
     }
 
@@ -39,6 +41,24 @@ public class OutputFragment extends BaseFragment {
             view=inflater.inflate(R.layout.frag_output,container,false);
             ButterKnife.bind(this,view);
 
+        }
+
+       /* bundle.putInt("total_trip_distance",total_trip_distance);
+        bundle.putInt("total_load_carried",total_load_carried);
+        bundle.putInt("cost_maintenance_km_year",cost_maintenance_km_year);
+        bundle.putInt("cost_running_year",cost_running_year);
+        bundle.putInt("cost_maintenance_year",cost_maintenance_year);
+        bundle.putInt("distance_year",distance_year);
+        bundle.putInt("fuel_cost_year",fuel_cost_year);
+        bundle.putInt("trip_mileage",trip_mileage);
+        bundle.putInt("distance_month",distance_month);
+        bundle.putInt("payload_tons_year",payload_tons_year);
+        bundle.putInt("total_load_trip",total_load_trip);
+        bundle.putInt("total_tons_km_year",total_tons_km_year);
+        bundle.putInt("total_freight_earned_year",total_freight_earned_year);
+*/
+        if (savedInstanceState!=null){
+            String total_trip_distance=(savedInstanceState.getString("total_trip_distance",null));
         }
         return view;
     }

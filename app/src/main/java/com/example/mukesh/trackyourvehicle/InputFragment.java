@@ -114,6 +114,10 @@ public class InputFragment extends BaseFragment {
     EditText etFreightRatePerTonPerKmReturnJourneyOne;
     @BindView(R.id.et_freight_rate_per_ton_per_km_return_journey_two)
     EditText etFreightRatePerTonPerKmReturnJourneyTwo;
+    @BindView(R.id.et_maintenance_cost_per_km_one)
+    EditText etMaintenanceCostPerKmOne;
+    @BindView(R.id.et_maintenance_cost_per_km_two)
+    EditText etMaintenanceCostPerKmTwo;
     @BindView(R.id.btn_submit)
     Button btn_submit;
 
@@ -143,28 +147,53 @@ public class InputFragment extends BaseFragment {
     public void submit()
     {
         Toast.makeText(mActivity, "clicked", Toast.LENGTH_SHORT).show();
-        calculateValues();
+try {
+
+}catch (Exception e){
+    calculateValues();
+
+}
+        Bundle bundle=new Bundle();
+        bundle.putInt("total_trip_distance",total_trip_distance);
+        bundle.putInt("total_load_carried",total_load_carried);
+        bundle.putInt("cost_maintenance_km_year",cost_maintenance_km_year);
+        bundle.putInt("cost_running_year",cost_running_year);
+        bundle.putInt("cost_maintenance_year",cost_maintenance_year);
+        bundle.putInt("distance_year",distance_year);
+        bundle.putInt("fuel_cost_year",fuel_cost_year);
+        bundle.putInt("trip_mileage",trip_mileage);
+        bundle.putInt("distance_month",distance_month);
+        bundle.putInt("payload_tons_year",payload_tons_year);
+        bundle.putInt("total_load_trip",total_load_trip);
+        bundle.putInt("total_tons_km_year",total_tons_km_year);
+        bundle.putInt("total_freight_earned_year",total_freight_earned_year);
+
+        OutputFragment fragment = new OutputFragment();
+        fragment.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_content,fragment,"outputfragment").commit();
+
+
     }
 
-
-   /* 1.	Payload in tons – Manual entry – 20.0 Tons
+    /*1.	Payload in tons – Manual entry – 20.0 Tons
     2.	OJ Pay load – Manual entry – 20.0 Tons
     3.	RJ pay load – Manual entry – 0.0 Tons
     4.	Distance with load OJ – Manual entry – 75.0 Tons
     5.	Distance with load RJ – Manual entry – 0.0 Tons
     6.	Distance without load – Manual entry – 75.0 Tons
     7.	Number of trips per month – Manual entry – 65.0
-            8.	Operative month – Manual entry - 11
-            9.	Mileage with load OJ – Manual entry – 3.80 kmpl
+    8.	Operative month – Manual entry - 11
+    9.	Mileage with load OJ – Manual entry – 3.80 kmpl
     10.	Mileage with load RJ – Manual entry – 0.0 kmpl
     11.	Mileage without load – manual entry – 4.50 kmpl
     12.	Fuel price - Manual entry – Rs.55.00
-            13.	Vehicle price – Manual entry – Rs.0.00
-            14.	Body build cost – Manual entry – Rs.0.00
-            15.	Tenure in month – Manual entry - 47
-            16.	Interest rate – Manual entry – 5.5%
-            17.	Freight rate per ton per km forward journey – Manual entry – Rs.0.00
-            18.	Freight rate per ton per km return journey – Manual entry – Rs.0.00
+    13.	Vehicle price – Manual entry – Rs.0.00
+    14.	Body build cost – Manual entry – Rs.0.00
+    15.	Tenure in month – Manual entry - 47
+    16.	Interest rate – Manual entry – 5.5%
+    17.	Freight rate per ton per km forward journey – Manual entry – Rs.0.00
+    18.	Freight rate per ton per km return journey – Manual entry – Rs.0.00
+    19. Maintenance cost per km - Rs. 20.00
 
 
 
@@ -172,30 +201,27 @@ public class InputFragment extends BaseFragment {
     1.	Total trip distance = distance with load OJ + distance with load RJ + distance without load – 150.0 Tons
     2.	Total load carried per trip = OJ load + RJ load – 20.0 Tons
     3.	Cost of maintenance per km per year = maintenance cost per year / total distance per year – Rs.0.90
-            4.	Running Cost per year = (Fuel cost + Maintenance cost) per year – Rs.1, 802,436
-            5.	Maintenance cost per year = cost of maintenance per km x distance per year – Rs.96, 525
-            6.	Distance per year = No of trips per year x distance per trip – 107250 kms
+    4.	Running Cost per year = (Fuel cost + Maintenance cost) per year – Rs.1, 802,436
+    5.	Maintenance cost per year = cost of maintenance per km x distance per year – Rs.96, 525
+    6.	Distance per year = No of trips per year x distance per trip – 107250 kms
     7.	Fuel cost per year = fuel price x [(distance per year) / trip mileage per km] – Rs.1301425
-            8.	Trip mileage = total trip distance/ [(trip distance with load/mileage with load) + (Distance without load/mileage without load)] – 4.1KMPL
+    8.	Trip mileage = total trip distance/ [(trip distance with load/mileage with load) + (Distance without load/mileage without load)] – 4.1KMPL
     9.	Distance per month = No of trips in month x distance per trip – 9750 kms
     10.	Payload in tons per year = total load per trip x trip per year – 14300 Tons
     11.	Total load per trip = onward load + return load – 20.0 Tons
     12.	Total ton-km per year = [[(onward journey load x onward distance) + (return journey load x return distance)] x No of trips in month x No of months] - 1072500
-            13.	Total freight earned per year = [(Freight rate per ton per km OJ x load OJ x OJ Distance with load) + (Freight rate per ton per km x Load RJ x RJ Distance with load)] x number of trips per year. – Rs.0.00
-
+    13.	Total freight earned per year = [(Freight rate per ton per km OJ x load OJ x OJ Distance with load) + (Freight rate per ton per km x Load RJ x RJ Distance with load)] x number of trips per year. – Rs.0.00
 */
     private void calculateValues()
     {
 
         total_trip_distance= TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithoutLoadOne));
         total_load_carried=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
-       //dought regarding 'maintenance cost per year'
-        cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(9,total_trip_distance);
+        cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(getNumber(etMaintenanceCostPerKmOne),total_trip_distance);
 
         cost_running_year=TripCalculate.getRunningCostPerYear(getNumber(etFuelPriceOne),cost_maintenance_km_year);
         cost_maintenance_year=TripCalculate.getMaintenanceCostPerYear(cost_maintenance_km_year,total_trip_distance);
         distance_year=TripCalculate.getDiatancePerYear(getNumber(etTripPerMonthOne)*11,total_trip_distance);
-       //dought
         fuel_cost_year=TripCalculate.getFuelCostPerYear(getNumber(etFuelPriceOne),distance_year,getNumber(etTripPerMonthOne));
 
         int milage_with_load=getNumber(etMileageWithLoadOJOne)+getNumber(etMileageWithLoadRJOne);
@@ -208,12 +234,6 @@ public class InputFragment extends BaseFragment {
         total_load_trip=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
         total_tons_km_year=TripCalculate.getTotalTonKmPerYear(getNumber(etOJPayOne),getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne),11);
         total_freight_earned_year=TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyOne),getNumber(etOJPayOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne),getNumber(etPayloadOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne)*11);
-
-
-
-
-
-
     }
 
     private int getNumber(EditText editText)

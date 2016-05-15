@@ -414,6 +414,26 @@
             style="@style/grid_item_style"
             android:hint="secondHint" />
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string19" />
+
+        <EditText
+            android:id="@+id/et_maintenance_cost_per_km_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_maintenance_cost_per_km_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
         <android.support.v4.widget.Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"

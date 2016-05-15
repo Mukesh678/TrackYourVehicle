@@ -21,6 +21,8 @@
     <string name="string16">Interest rate </string>
     <string name="string17">Freight rate per ton per km forward journey </string>
     <string name="string18">Freight rate per ton per km return journey </string>
+    <string name="string19">Maintenance cost per km </string>
+
 
 
 </resources>
