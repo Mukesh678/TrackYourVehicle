@@ -148,7 +148,8 @@ public class InputFragment extends BaseFragment {
     public void submit()
     {
         Toast.makeText(mActivity, "clicked", Toast.LENGTH_SHORT).show();
-        calculateValues();
+        calculateValuesOne();
+        calculateValuesOneTwo();
 try {
 
 }catch (Exception e){
@@ -202,39 +203,44 @@ e.printStackTrace();
     1.	Total trip distance = distance with load OJ + distance with load RJ + distance without load – 150.0 Tons
     2.	Total load carried per trip = OJ load + RJ load – 20.0 Tons
     3.	Cost of maintenance per km per year = maintenance cost per year / total distance per year – Rs.0.90
+       7.	Fuel cost per year = fuel price x [(distance per year) / trip mileage per km] – Rs.1301425
+    8.	Trip mileage = total trip distance/ [(trip distance with load/mileage with load) + (Distance without load/mileage without load)] – 4.1KMPL
+
     4.	Running Cost per year = (Fuel cost + Maintenance cost) per year – Rs.1, 802,436
     5.	Maintenance cost per year = cost of maintenance per km x distance per year – Rs.96, 525
     6.	Distance per year = No of trips per year x distance per trip – 107250 kms
-    7.	Fuel cost per year = fuel price x [(distance per year) / trip mileage per km] – Rs.1301425
-    8.	Trip mileage = total trip distance/ [(trip distance with load/mileage with load) + (Distance without load/mileage without load)] – 4.1KMPL
     9.	Distance per month = No of trips in month x distance per trip – 9750 kms
     10.	Payload in tons per year = total load per trip x trip per year – 14300 Tons
-    11.	Total load per trip = onward load + return load – 20.0 Tons
+   // 11.	Total load per trip = onward load + return load – 20.0 Tons
     12.	Total ton-km per year = [[(onward journey load x onward distance) + (return journey load x return distance)] x No of trips in month x No of months] - 1072500
     13.	Total freight earned per year = [(Freight rate per ton per km OJ x load OJ x OJ Distance with load) + (Freight rate per ton per km x Load RJ x RJ Distance with load)] x number of trips per year. – Rs.0.00
 */
-    private void calculateValues()
+    private void calculateValuesOne()
     {
 
         total_trip_distance= TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithoutLoadOne));
         total_load_carried=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
-        cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(getNumber(etMaintenanceCostPerKmOne),total_trip_distance);
-
-        cost_running_year=TripCalculate.getRunningCostPerYear(getNumber(etFuelPriceOne),cost_maintenance_km_year);
-        cost_maintenance_year=TripCalculate.getMaintenanceCostPerYear(cost_maintenance_km_year,total_trip_distance);
-        distance_year=TripCalculate.getDiatancePerYear(getNumber(etTripPerMonthOne)*11,total_trip_distance);
-        fuel_cost_year=TripCalculate.getFuelCostPerYear(getNumber(etFuelPriceOne),distance_year,getNumber(etTripPerMonthOne));
+        cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(getNumber(etMaintenanceCostPerKmOne)*12,total_trip_distance);
 
         int milage_with_load=getNumber(etMileageWithLoadOJOne)+getNumber(etMileageWithLoadRJOne);
         int trip_distance_with_load=total_trip_distance-getNumber(etDistanceWithoutLoadOne);
 
+
         trip_mileage=TripCalculate.getTripMileage(total_trip_distance,trip_distance_with_load,milage_with_load,getNumber(etDistanceWithoutLoadOne),getNumber(etMileageWithoutLoadOne));
 
+        fuel_cost_year=TripCalculate.getFuelCostPerYear(getNumber(etFuelPriceOne),distance_year,trip_mileage);
+
+        cost_running_year=TripCalculate.getRunningCostPerYear(fuel_cost_year,cost_maintenance_km_year);
+        cost_maintenance_year=TripCalculate.getMaintenanceCostPerYear(cost_maintenance_km_year,total_trip_distance);
+        distance_year=TripCalculate.getDiatancePerYear(getNumber(etTripPerMonthOne)*12,total_trip_distance);
+
+
         distance_month=TripCalculate.getDistancePerMonth(getNumber(etTripPerMonthOne),total_trip_distance);
-        payload_tons_year=TripCalculate.getPayLoadInTonsPerYear(total_load_carried,total_trip_distance);
-        total_load_trip=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
-        total_tons_km_year=TripCalculate.getTotalTonKmPerYear(getNumber(etOJPayOne),getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne),11);
-        total_freight_earned_year=TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyOne),getNumber(etOJPayOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne),getNumber(etPayloadOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne)*11);
+        payload_tons_year=TripCalculate.getPayLoadInTonsPerYear(total_load_carried,getNumber(etTripPerMonthOne)*12);
+        // 2nd eqn is same as below
+        //total_load_trip=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
+        total_tons_km_year=TripCalculate.getTotalTonKmPerYear(getNumber(etOJPayOne),getNumber(etDistanceWithLoadOJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne),12);
+        total_freight_earned_year=TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyOne),getNumber(etOJPayOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne),getNumber(etPayloadOne),getNumber(etDistanceWithLoadRJOne),getNumber(etTripPerMonthOne)*12);
 
         Log.i("total_trip_distance",total_trip_distance+"");
         Log.i("total_load_carried",total_load_carried+"");
@@ -249,6 +255,50 @@ e.printStackTrace();
         Log.i("total_load_trip",total_load_trip+"");
         Log.i("total_tons_km_year",total_tons_km_year+"");
         Log.i("total_freht_earned_year",total_freight_earned_year+"");
+
+
+    }
+
+    private void calculateValuesOneTwo()
+    {
+
+        total_trip_distance= TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJTwo),getNumber(etDistanceWithLoadRJTwo),getNumber(etDistanceWithoutLoadTwo));
+        total_load_carried=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayTwo),getNumber(etRJPayTwo));
+        cost_maintenance_km_year=TripCalculate.getMaintenanceCostPerKmPerYear(getNumber(etMaintenanceCostPerKmTwo)*12,total_trip_distance);
+
+        int milage_with_load=getNumber(etMileageWithLoadOJTwo)+getNumber(etMileageWithLoadRJTwo);
+        int trip_distance_with_load=total_trip_distance-getNumber(etDistanceWithoutLoadTwo);
+
+
+        trip_mileage=TripCalculate.getTripMileage(total_trip_distance,trip_distance_with_load,milage_with_load,getNumber(etDistanceWithoutLoadTwo),getNumber(etMileageWithoutLoadTwo));
+
+        fuel_cost_year=TripCalculate.getFuelCostPerYear(getNumber(etFuelPriceTwo),distance_year,trip_mileage);
+
+        cost_running_year=TripCalculate.getRunningCostPerYear(fuel_cost_year,cost_maintenance_km_year);
+        cost_maintenance_year=TripCalculate.getMaintenanceCostPerYear(cost_maintenance_km_year,total_trip_distance);
+        distance_year=TripCalculate.getDiatancePerYear(getNumber(etTripPerMonthTwo)*12,total_trip_distance);
+
+
+        distance_month=TripCalculate.getDistancePerMonth(getNumber(etTripPerMonthTwo),total_trip_distance);
+        payload_tons_year=TripCalculate.getPayLoadInTonsPerYear(total_load_carried,getNumber(etTripPerMonthTwo)*12);
+        // 2nd eqn is same as below
+        //total_load_trip=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayTwo),getNumber(etRJPayTwo));
+        total_tons_km_year=TripCalculate.getTotalTonKmPerYear(getNumber(etOJPayTwo),getNumber(etDistanceWithLoadOJTwo),getNumber(etDistanceWithLoadRJTwo),getNumber(etDistanceWithLoadRJTwo),getNumber(etTripPerMonthTwo),12);
+        total_freight_earned_year=TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyTwo),getNumber(etOJPayTwo),getNumber(etDistanceWithLoadRJTwo),getNumber(etTripPerMonthTwo),getNumber(etPayloadTwo),getNumber(etDistanceWithLoadRJTwo),getNumber(etTripPerMonthTwo)*12);
+
+        Log.i("total_trip_distance2",total_trip_distance+"");
+        Log.i("total_load_carried2",total_load_carried+"");
+        Log.i("cost_maintnce_km_year2",cost_maintenance_km_year+"");
+        Log.i("cost_running_year2",cost_running_year+"");
+        Log.i("cost_maintenance_year2",cost_maintenance_year+"");
+        Log.i("distance_year2",distance_year+"");
+        Log.i("fuel_cost_year2",fuel_cost_year+"");
+        Log.i("trip_mileage2",trip_mileage+"");
+        Log.i("distance_month2",distance_month+"");
+        Log.i("payload_tons_year2",payload_tons_year+"");
+        Log.i("total_load_trip2",total_load_trip+"");
+        Log.i("total_tons_km_year2",total_tons_km_year+"");
+        Log.i("total_freht_erned_year2",total_freight_earned_year+"");
 
 
     }
