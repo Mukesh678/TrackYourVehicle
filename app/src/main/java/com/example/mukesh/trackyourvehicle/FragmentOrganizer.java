@@ -78,8 +78,8 @@ public abstract class FragmentOrganizer {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 //        transaction.setCustomAnimations(R.animator.card_flip_right_in, R.animator.card_flip_right_out,
 //                R.animator.card_flip_left_in, R.animator.card_flip_left_out);
-        transaction.setCustomAnimations(R.anim.new_open_scale, R.anim.new_close_scale,
-                R.anim.new_open_translate, R.anim.new_close_transtale);
+//        transaction.setCustomAnimations(R.anim.new_open_scale, R.anim.new_close_scale,
+//                R.anim.new_open_translate, R.anim.new_close_transtale);
         transaction.replace(R.id.main_content, fragment, fragmentTag);
         transaction.addToBackStack(fragmentTag).commit();
 

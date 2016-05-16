@@ -434,6 +434,29 @@
             android:layout_height="wrap_content"
             style="@style/grid_item_style"
             android:hint="secondHint" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="@string/string20" />
+
+        <EditText
+            android:id="@+id/et_crew_sal_month_one"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="firstHint" />
+
+        <EditText
+            android:id="@+id/et_crew_sal_month_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_item_style"
+            android:hint="secondHint" />
+
         <android.support.v4.widget.Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"

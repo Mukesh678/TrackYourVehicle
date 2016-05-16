@@ -21,87 +21,110 @@ public class TripCalculate
     12.	Total ton-km per year = [[(onward journey load x onward distance) + (return journey load x return distance)] x No of trips in month x No of months] - 1072500
     13.	Total freight earned per year = [(Freight rate per ton per km OJ x load OJ x OJ Distance with load) + (Freight rate per ton per km x Load RJ x RJ Distance with load)] x number of trips per year. – Rs.0.00
     14. Maintenance cost per year = maintenance cost per km * distance in a year
+    15. Initial Cost = body cost + vehicle price
+    16  Crew Salary per year = Operative_month total * crew salary month
+    17. Total Fixed cost per year= Crew Salary per year + taxes + Admin expanses
+
     */
 
 
    //1.
-    public static int getTotalTripDistance(int distance_OJ,int distance_RJ,int distance_no_load)
+    public static float getTotalTripDistance(float distance_OJ,float distance_RJ,float distance_no_load)
     {
         return distance_OJ + distance_RJ + distance_no_load;
     }
 
     //2
-    public static int getTotalTripLoadCarried(int OJ_Load,int RJ_Load)
+    public static float getTotalTripLoadCarried(float OJ_Load,float RJ_Load)
     {
         return OJ_Load + RJ_Load;
     }
 
     //3
-    public static int getMaintenanceCostPerKmPerYear(int cost_maintenance_year,int total_distance_year)
+    public static float getMaintenanceCostPerKmPerYear(float cost_maintenance_year,float total_distance_year)
     {
         return cost_maintenance_year/ total_distance_year;
     }
 
     //4
-    public static int getRunningCostPerYear(int cost_fuel_year,int cost_maintenance_year)
+    public static float getRunningCostPerYear(float cost_fuel_year,float cost_maintenance_year)
     {
         return cost_fuel_year + cost_maintenance_year;
     }
 
     //5
-    public static int getMaintenanceCostPerYear(int cost_maintenance_km,int total_distance_year)
+    public static float getMaintenanceCostPerYear(float cost_maintenance_km,float total_distance_year)
     {
         return cost_maintenance_km * total_distance_year;
     }
 
     //6
-    public static int getDiatancePerYear(int no_trip_year,int trip_distance)
+    public static float getDistancePerYear(float no_trip_year, float trip_distance)
     {
         return no_trip_year * trip_distance;
     }
 
     //7
-    public static int getFuelCostPerYear(int price_fuel,int distance_year,int trip_mileage_km)
+    public static float getFuelCostPerYear(float price_fuel,float distance_year,float trip_mileage_km)
     {
         return price_fuel * (distance_year / trip_mileage_km);
     }
 
     //8
-    public static int getTripMileage(int total_trip_distance,int trip_distance_load,int mileage_load,int distance_without_load,int mileage_without_load)
+    public static float getTripMileage(float total_trip_distance,float trip_distance_load,float mileage_load,float distance_without_load,float mileage_without_load)
     {
         return total_trip_distance / ( (trip_distance_load / mileage_load) + (distance_without_load / mileage_without_load) );
     }
 
     //9
-    public static int getDistancePerMonth(int no_trips_month,int distance_trip)
+    public static float getDistancePerMonth(float no_trips_month,float distance_trip)
     {
         return no_trips_month * distance_trip;
     }
 
     //10
-    public static int getPayLoadInTonsPerYear(int total_load_trip,int trip_year)
+    public static float getPayLoadInTonsPerYear(float total_load_trip,float trip_year)
     {
         return total_load_trip * trip_year;
     }
 
     //11
-    public static int getTotalLoadPerTrip(int onward_load,int return_load)
+    public static float getTotalLoadPerTrip(float onward_load,float return_load)
     {
         return onward_load + return_load;
     }
 
     //12
-    public static int getTotalTonKmPerYear(int onward_load,int onward_distance,int return_load,int return_distance,int no_trips_month,int no_month)
+    public static float getTotalTonKmPerYear(float onward_load,float onward_distance,float return_load,float return_distance,float no_trips_month,float no_month)
     {
         return ((onward_load * onward_distance) + (return_load * return_distance)) * no_trips_month * no_month;
     }
 
 
     //13
-    public static int getTotalFreightEarnedPerYear(int freight_rate_ton_km_OJ,int load_OJ,int distance_load_OJ,int freight_rate_ton_km_RJ,int load_RJ,int distance_load_RJ,int no_trips_year)
+    public static float getTotalFreightEarnedPerYear(float freight_rate_ton_km_OJ,float load_OJ,float distance_load_OJ,float freight_rate_ton_km_RJ,float load_RJ,float distance_load_RJ,float no_trips_year)
     {
         return ((freight_rate_ton_km_OJ * load_OJ * distance_load_OJ) + (freight_rate_ton_km_RJ * load_RJ * distance_load_RJ)) * no_trips_year;
     }
 
+
+    //15
+    public static float getInitialCost(float body_cost,float vehicle_price)
+    {
+        return body_cost + vehicle_price;
+    }
+
+
+    //16
+    public static float getCrewSalaryYear(float operative_moth,float crew_salary_month)
+    {
+        return operative_moth * crew_salary_month;
+    }
+
+    //16
+    public static float getTotalFixedCost(float crew_salary_year,float taxes ,float admin_expenses)
+    {
+        return crew_salary_year * taxes * admin_expenses;
+    }
 
 }

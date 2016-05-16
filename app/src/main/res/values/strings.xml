@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrackYourVehicle</string>
+    <string name="app_name">BRT</string>
     <string name="string1">Payload </string>
 
     <string name="string2">OJ Pay load </string>
@@ -22,6 +22,7 @@
     <string name="string17">Freight rate per ton per km forward journey </string>
     <string name="string18">Freight rate per ton per km return journey </string>
     <string name="string19">Maintenance cost per km </string>
+    <string name="string20">Crew Salary Per Month </string>
 
 
 
