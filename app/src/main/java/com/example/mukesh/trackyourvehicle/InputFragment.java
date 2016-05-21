@@ -2,6 +2,7 @@ package com.example.mukesh.trackyourvehicle;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -129,9 +130,9 @@ public class InputFragment extends BaseFragment {
 
     private OutputBean bean1, bean2;
 
-    private float finance_amount_age = 1;
+    private double finance_amount_age = 1d;
 
-    private float finance_charges_age = 0.055f;
+    private double finance_charges_age = 0.055d;
 
     public static InputFragment newInstance() {
 
@@ -213,13 +214,13 @@ public class InputFragment extends BaseFragment {
 
         bean1.setTotal_trip_distance(TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJOne), getNumber(etDistanceWithLoadRJOne), getNumber(etDistanceWithoutLoadOne)));
         bean1.setTotal_load_carried(TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne), getNumber(etRJPayOne)));
-        bean1.setCost_maintenance_km_year(TripCalculate.getMaintenanceCostPerKmPerYear(getNumber(etMaintenanceCostPerKmOne) * 12, bean1.getTotal_trip_distance()));
+        bean1.setCost_maintenance_km_year(TripCalculate.getMaintenanceCostPerKmPerYear(getNumber(etMaintenanceCostPerKmOne), bean1.getTotal_trip_distance()));
 
-        float mileage_with_load = getNumber(etMileageWithLoadOJOne) + getNumber(etMileageWithLoadRJOne);
-        float trip_distance_with_load = bean1.getTotal_trip_distance() - getNumber(etDistanceWithoutLoadOne);
+        double mileage_with_load = getNumber(etMileageWithLoadOJOne) + getNumber(etMileageWithLoadRJOne);
+        double trip_distance_with_load = bean1.getTotal_trip_distance() - getNumber(etDistanceWithoutLoadOne);
 
         bean1.setCost_maintenance_year(TripCalculate.getMaintenanceCostPerYear(bean1.getCost_maintenance_km_year(), bean1.getTotal_trip_distance()));
-        bean1.setDistance_year(TripCalculate.getDistancePerYear(getNumber(etTripPerMonthOne) * 12, bean1.getTotal_trip_distance()));
+        bean1.setDistance_year(TripCalculate.getDistancePerYear(getNumber(etTripPerMonthOne) *getNumber(etOperativeMonthOne), bean1.getTotal_trip_distance()));
         bean1.setTrip_mileage(TripCalculate.getTripMileage(bean1.getTotal_trip_distance(), trip_distance_with_load, mileage_with_load, getNumber(etDistanceWithoutLoadOne), getNumber(etMileageWithoutLoadOne)));
 
         bean1.setFuel_cost_year(TripCalculate.getFuelCostPerYear(getNumber(etFuelPriceOne), bean1.getDistance_year(), bean1.getTrip_mileage()));
@@ -228,22 +229,24 @@ public class InputFragment extends BaseFragment {
 
 
         bean1.setDistance_month(TripCalculate.getDistancePerMonth(getNumber(etTripPerMonthOne), bean1.getTotal_trip_distance()));
-        bean1.setPayload_tons_year(TripCalculate.getPayLoadInTonsPerYear(bean1.getTotal_load_carried(), getNumber(etTripPerMonthOne) * 12));
+        bean1.setPayload_tons_year(TripCalculate.getPayLoadInTonsPerYear(bean1.getTotal_load_carried(), getNumber(etTripPerMonthOne) *getNumber(etOperativeMonthOne)));
         // 2nd eqn is same as below
         //total_load_trip=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayOne),getNumber(etRJPayOne));
-        bean1.setTotal_tons_km_year(TripCalculate.getTotalTonKmPerYear(getNumber(etOJPayOne), getNumber(etDistanceWithLoadOJOne), getNumber(etRJPayOne), getNumber(etDistanceWithLoadRJOne), getNumber(etTripPerMonthOne), 12));
-        bean1.setTotal_freight_earned_year(TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyOne), getNumber(etOJPayOne), getNumber(etDistanceWithLoadOJOne), getNumber(etFreightRatePerTonPerKmReturnJourneyOne), getNumber(etRJPayOne), getNumber(etDistanceWithLoadRJOne), getNumber(etTripPerMonthOne) * 12));
+        bean1.setTotal_tons_km_year(TripCalculate.getTotalTonKmPerYear(getNumber(etOJPayOne), getNumber(etDistanceWithLoadOJOne), getNumber(etRJPayOne), getNumber(etDistanceWithLoadRJOne), getNumber(etTripPerMonthOne), getNumber(etOperativeMonthOne)));
+        bean1.setTotal_freight_earned_year(TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyOne), getNumber(etOJPayOne), getNumber(etDistanceWithLoadOJOne), getNumber(etFreightRatePerTonPerKmReturnJourneyOne), getNumber(etRJPayOne), getNumber(etDistanceWithLoadRJOne), getNumber(etTripPerMonthOne) * getNumber(etOperativeMonthOne)));
 
-        float initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostOne),getNumber(etVehiclePriceOne));
-        float crew_salary_year = TripCalculate.getCrewSalaryYear(getNumber(etOperativeMonthOne),getNumber(etCrewSalMonthOne));
-        float taxes= (float) (initial_cost*0.04);
-        float admin_expenses= (float) (initial_cost*0.01);
+        double initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostOne),getNumber(etVehiclePriceOne));
+        double crew_salary_year = TripCalculate.getCrewSalaryYear(getNumber(etOperativeMonthOne),getNumber(etCrewSalMonthOne));
+        double taxes= (double) (initial_cost*0.04);
+        double admin_expenses= (double) (initial_cost*0.01);
 
         bean1.setTotal_fixed_cost(TripCalculate.getTotalFixedCost(crew_salary_year ,taxes , admin_expenses));
 
-        float finance_amount = initial_cost * finance_amount_age;
+        double finance_amount = initial_cost * finance_amount_age;
 
         bean1.setTotal_finance_cost(finance_amount*finance_charges_age);
+
+
 
     }
 
@@ -252,13 +255,13 @@ public class InputFragment extends BaseFragment {
 
         bean2.setTotal_trip_distance(TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJTwo), getNumber(etDistanceWithLoadRJTwo), getNumber(etDistanceWithoutLoadTwo)));
         bean2.setTotal_load_carried(TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayTwo), getNumber(etRJPayTwo)));
-        bean2.setCost_maintenance_km_year(TripCalculate.getMaintenanceCostPerKmPerYear(getNumber(etMaintenanceCostPerKmTwo) * 12, bean2.getTotal_trip_distance()));
+        bean2.setCost_maintenance_km_year(TripCalculate.getMaintenanceCostPerKmPerYear(getNumber(etMaintenanceCostPerKmTwo) , bean2.getTotal_trip_distance()));
 
-        float mileage_with_load = getNumber(etMileageWithLoadOJTwo) + getNumber(etMileageWithLoadRJTwo);
-        float trip_distance_with_load = bean2.getTotal_trip_distance() - getNumber(etDistanceWithoutLoadTwo);
+        double mileage_with_load = getNumber(etMileageWithLoadOJTwo) + getNumber(etMileageWithLoadRJTwo);
+        double trip_distance_with_load = bean2.getTotal_trip_distance() - getNumber(etDistanceWithoutLoadTwo);
 
         bean2.setCost_maintenance_year(TripCalculate.getMaintenanceCostPerYear(bean2.getCost_maintenance_km_year(), bean2.getTotal_trip_distance()));
-        bean2.setDistance_year(TripCalculate.getDistancePerYear(getNumber(etTripPerMonthTwo) * 12, bean2.getTotal_trip_distance()));
+        bean2.setDistance_year(TripCalculate.getDistancePerYear(getNumber(etTripPerMonthTwo) *getNumber(etOperativeMonthTwo), bean2.getTotal_trip_distance()));
         bean2.setTrip_mileage(TripCalculate.getTripMileage(bean2.getTotal_trip_distance(), trip_distance_with_load, mileage_with_load, getNumber(etDistanceWithoutLoadTwo), getNumber(etMileageWithoutLoadTwo)));
 
         bean2.setFuel_cost_year(TripCalculate.getFuelCostPerYear(getNumber(etFuelPriceTwo), bean2.getDistance_year(), bean2.getTrip_mileage()));
@@ -266,27 +269,27 @@ public class InputFragment extends BaseFragment {
         bean2.setCost_running_year(TripCalculate.getRunningCostPerYear(bean2.getFuel_cost_year(), bean2.getCost_maintenance_year()));
 
         bean2.setDistance_month(TripCalculate.getDistancePerMonth(getNumber(etTripPerMonthTwo), bean2.getTotal_trip_distance()));
-        bean2.setPayload_tons_year(TripCalculate.getPayLoadInTonsPerYear(bean2.getTotal_load_carried(), getNumber(etTripPerMonthTwo) * 12));
+        bean2.setPayload_tons_year(TripCalculate.getPayLoadInTonsPerYear(bean2.getTotal_load_carried(), getNumber(etTripPerMonthTwo) * getNumber(etOperativeMonthTwo)));
         // 2nd eqn is same as below
         //total_load_trip=TripCalculate.getTotalLoadPerTrip(getNumber(etOJPayTwo),getNumber(etRJPayTwo));
-        bean2.setTotal_tons_km_year(TripCalculate.getTotalTonKmPerYear(getNumber(etOJPayTwo), getNumber(etDistanceWithLoadOJTwo), getNumber(etRJPayTwo), getNumber(etDistanceWithLoadRJTwo), getNumber(etTripPerMonthTwo), 12));
-        bean2.setTotal_freight_earned_year(TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyTwo), getNumber(etOJPayTwo), getNumber(etDistanceWithLoadOJTwo), getNumber(etFreightRatePerTonPerKmReturnJourneyTwo), getNumber(etRJPayTwo), getNumber(etDistanceWithLoadRJTwo), getNumber(etTripPerMonthTwo) * 12));
+        bean2.setTotal_tons_km_year(TripCalculate.getTotalTonKmPerYear(getNumber(etOJPayTwo), getNumber(etDistanceWithLoadOJTwo), getNumber(etRJPayTwo), getNumber(etDistanceWithLoadRJTwo), getNumber(etTripPerMonthTwo),getNumber(etOperativeMonthTwo)));
+        bean2.setTotal_freight_earned_year(TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyTwo), getNumber(etOJPayTwo), getNumber(etDistanceWithLoadOJTwo), getNumber(etFreightRatePerTonPerKmReturnJourneyTwo), getNumber(etRJPayTwo), getNumber(etDistanceWithLoadRJTwo), getNumber(etTripPerMonthTwo) * getNumber(etOperativeMonthTwo)));
 
-        float initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostOne),getNumber(etVehiclePriceOne));
-        float crew_salary_year = TripCalculate.getCrewSalaryYear(getNumber(etOperativeMonthOne),getNumber(etCrewSalMonthOne));
-        float taxes= (float) (initial_cost*0.04);
-        float admin_expenses= (float) (initial_cost*0.01);
+        double initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostOne),getNumber(etVehiclePriceOne));
+        double crew_salary_year = TripCalculate.getCrewSalaryYear(getNumber(etOperativeMonthOne),getNumber(etCrewSalMonthOne));
+        double taxes= (double) (initial_cost*0.04);
+        double admin_expenses= (double) (initial_cost*0.01);
 
         bean2.setTotal_fixed_cost(TripCalculate.getTotalFixedCost(crew_salary_year ,taxes , admin_expenses));
 
-        float finance_amount = initial_cost * finance_amount_age;
+        double finance_amount = initial_cost * finance_amount_age;
 
         bean2.setTotal_finance_cost(finance_amount*finance_charges_age);
     }
 
-    private float getNumber(EditText editText) {
+    private double getNumber(EditText editText) {
 
-        float number = Float.parseFloat(editText.getText().toString());
+        double number = (double) Math.round(Double.parseDouble(editText.getText().toString()));
         return number;
 
     }

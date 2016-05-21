@@ -68,15 +68,17 @@ public class OutputFragment extends BaseFragment {
     private void showResult() {
 
         if (bean1 != null && bean2 != null) {
-            float operating_cost_year_one = bean1.getTotal_finance_cost() + bean1.getCost_running_year() + bean1.getTotal_fixed_cost();
-            float operating_profit_year_one = bean1.getTotal_freight_earned_year() - operating_cost_year_one;
+            double operating_cost_year_one = Math.round(bean1.getTotal_finance_cost() + bean1.getCost_running_year() + bean1.getTotal_fixed_cost());
+            double operating_profit_year_one = Math.round(bean1.getTotal_freight_earned_year() - operating_cost_year_one);
 
 
-            float operating_cost_year_two = bean2.getTotal_finance_cost() + bean2.getCost_running_year() + bean2.getTotal_fixed_cost();
-            float operating_profit_year_two = bean2.getTotal_freight_earned_year() - operating_cost_year_two;
+            double operating_cost_year_two = Math.round(bean2.getTotal_finance_cost() + bean2.getCost_running_year() + bean2.getTotal_fixed_cost());
+            double operating_profit_year_two = Math.round(bean2.getTotal_freight_earned_year() - operating_cost_year_two);
 
-            float increasing_in_op= operating_profit_year_one - operating_profit_year_two;
-            float increasing_in_op_five_year = increasing_in_op*5;
+            double increasing_in_op= operating_profit_year_one - operating_profit_year_two;
+            double increasing_in_op_five_year = increasing_in_op*5;
+
+
 
             tvResult1.setText("Operating Cost Per Year : "+operating_cost_year_one
                     +"\nOperating Profit Per Year : "+operating_profit_year_one

@@ -14,7 +14,7 @@
         <item name="layout_columnWeight">1</item>
         <item name="layout_gravity">fill_horizontal|center_vertical</item>
         <item name="android:singleLine">true</item>
-        <item name="android:inputType">number</item>
+        <item name="android:inputType">numberDecimal</item>
 
     </style>
 
