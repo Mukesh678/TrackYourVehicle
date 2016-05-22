@@ -43,7 +43,8 @@ public class TripCalculate
     //3
     public static double getMaintenanceCostPerKmPerYear(double cost_maintenance_year,double total_distance_year)
     {
-        return cost_maintenance_year/ total_distance_year;
+
+        return cost_maintenance_year/ ((total_distance_year==0)?1:total_distance_year);
     }
 
     //4
@@ -67,13 +68,16 @@ public class TripCalculate
     //7
     public static double getFuelCostPerYear(double price_fuel,double distance_year,double trip_mileage_km)
     {
-        return price_fuel * (distance_year / trip_mileage_km);
+        double disDivMileage=(distance_year / ((trip_mileage_km==0)?1:trip_mileage_km));
+        return price_fuel * disDivMileage ;
     }
 
     //8
     public static double getTripMileage(double total_trip_distance,double trip_distance_load,double mileage_load,double distance_without_load,double mileage_without_load)
     {
-        return total_trip_distance / ( (trip_distance_load / mileage_load) + (distance_without_load / mileage_without_load) );
+        double div= ((trip_distance_load / ((mileage_load==0) ? 1:mileage_load) + (distance_without_load / ((mileage_without_load==0)?1:mileage_without_load))));
+
+        return total_trip_distance / ((div==0)?1:div);
     }
 
     //9
