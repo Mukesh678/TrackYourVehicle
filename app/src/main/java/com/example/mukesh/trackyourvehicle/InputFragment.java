@@ -298,8 +298,7 @@ public class InputFragment extends BaseFragment {
 
     private double getNumber(EditText editText) {
 
-        double number = Double.parseDouble(editText.getText().toString());
-        return number;
+        return Double.parseDouble(editText.getText().toString());
 
     }
 
