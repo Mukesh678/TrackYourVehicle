@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -156,7 +155,6 @@ public class InputFragment extends BaseFragment {
 
     @OnClick(R.id.btn_submit)
     public void submit() {
-        Toast.makeText(mActivity, "clicked", Toast.LENGTH_SHORT).show();
 
         calculateValuesOne();
 
@@ -240,8 +238,8 @@ public class InputFragment extends BaseFragment {
 
         double initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostOne),getNumber(etVehiclePriceOne));
         double crew_salary_year = TripCalculate.getCrewSalaryYear(getNumber(etOperativeMonthOne),getNumber(etCrewSalMonthOne));
-        double taxes= (double) (initial_cost*0.04);
-        double admin_expenses= (double) (initial_cost*0.01);
+        double taxes=initial_cost*0.04;
+        double admin_expenses= initial_cost*0.01;
 
         bean1.setTotal_fixed_cost(TripCalculate.getTotalFixedCost(crew_salary_year ,taxes , admin_expenses));
 
@@ -254,6 +252,7 @@ public class InputFragment extends BaseFragment {
     }
 
     private void calculateValuesOneTwo() {
+
         bean2 = new OutputBean();
 
         bean2.setTotal_trip_distance(TripCalculate.getTotalTripDistance(getNumber(etDistanceWithLoadOJTwo), getNumber(etDistanceWithLoadRJTwo), getNumber(etDistanceWithoutLoadTwo)));
@@ -286,8 +285,8 @@ public class InputFragment extends BaseFragment {
 
         double initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostTwo),getNumber(etVehiclePriceTwo));
         double crew_salary_year = TripCalculate.getCrewSalaryYear(getNumber(etOperativeMonthTwo),getNumber(etCrewSalMonthTwo));
-        double taxes=(initial_cost*0.04);
-        double admin_expenses= (initial_cost*0.01);
+        double taxes= initial_cost*0.04;
+        double admin_expenses= initial_cost*0.01;
 
         bean2.setTotal_fixed_cost(TripCalculate.getTotalFixedCost(crew_salary_year ,taxes , admin_expenses));
 
