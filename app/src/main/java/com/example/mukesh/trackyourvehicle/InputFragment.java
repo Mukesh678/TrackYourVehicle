@@ -286,8 +286,8 @@ public class InputFragment extends BaseFragment {
 
         double initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostTwo),getNumber(etVehiclePriceTwo));
         double crew_salary_year = TripCalculate.getCrewSalaryYear(getNumber(etOperativeMonthTwo),getNumber(etCrewSalMonthTwo));
-        double taxes= (double) (initial_cost*0.04);
-        double admin_expenses= (double) (initial_cost*0.01);
+        double taxes=(initial_cost*0.04);
+        double admin_expenses= (initial_cost*0.01);
 
         bean2.setTotal_fixed_cost(TripCalculate.getTotalFixedCost(crew_salary_year ,taxes , admin_expenses));
 
