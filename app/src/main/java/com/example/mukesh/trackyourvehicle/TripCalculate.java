@@ -124,7 +124,7 @@ public class TripCalculate
     //16
     public static double getTotalFixedCost(double crew_salary_year,double taxes ,double admin_expenses)
     {
-        return crew_salary_year * taxes * admin_expenses;
+        return crew_salary_year + taxes + admin_expenses;
     }
 
 }

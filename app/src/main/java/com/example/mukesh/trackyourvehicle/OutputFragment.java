@@ -79,7 +79,6 @@ public class OutputFragment extends BaseFragment {
             double increasing_in_op_five_year = increasing_in_op*5;
 
 
-
             tvResult1.setText("Operating Cost Per Year : "+operating_cost_year_one
                     +"\nOperating Profit Per Year : "+operating_profit_year_one
                     +"\nIncreasing In Operating Profit : "+increasing_in_op
