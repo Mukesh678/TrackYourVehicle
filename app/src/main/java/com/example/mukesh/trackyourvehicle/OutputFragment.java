@@ -85,13 +85,13 @@ public class OutputFragment extends BaseFragment {
 
 
             Spanned result1= Html.fromHtml("Operating Cost Per Year : "+getColorText(operating_cost_year_one)
-                    +"\nOperating Profit Per Year : "+getColorText(operating_profit_year_one));
+                    +"<br>Operating Profit Per Year : "+getColorText(operating_profit_year_one));
 
             Spanned result2=Html.fromHtml("Operating Cost Per Year : "+getColorText(operating_cost_year_two)
-                    +"\nOperating Profit Per Year : "+getColorText(operating_profit_year_two));
+                    +"<br>Operating Profit Per Year : "+getColorText(operating_profit_year_two));
 
             Spanned result3=Html.fromHtml("Increasing In Operating Profit : "+getColorText(increasing_in_op)
-                    +"\nIncreasing In Operating Profit For Five Years : "+getColorText(increasing_in_op_five_year));
+                    +"<br>Increasing In Operating Profit For Five Years : "+getColorText(increasing_in_op_five_year));
 
             tvResult1.setText(result1);
 
@@ -133,6 +133,5 @@ public class OutputFragment extends BaseFragment {
 
         return sb.toString();
     }
-
 
 }
