@@ -11,6 +11,53 @@
         app:columnCount="3"
         app:alignmentMode="alignBounds">
 
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="Customer Name:" />
+
+        <EditText
+            android:id="@+id/et_cust_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_single_style"
+            app:layout_columnSpan="2"
+            android:hint="Enter Name"
+            />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="Model Number:" />
+
+        <EditText
+            android:id="@+id/et_model"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_single_style"
+            app:layout_columnSpan="2"
+            android:hint="Enter Model No."
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_text_style"
+            android:text="DSE:" />
+
+        <EditText
+            android:id="@+id/et_dse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/grid_single_style"
+            app:layout_columnSpan="2"
+            android:hint="Enter DSE"
+            />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"

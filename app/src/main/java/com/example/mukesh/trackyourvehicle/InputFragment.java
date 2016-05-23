@@ -121,6 +121,12 @@ public class InputFragment extends BaseFragment {
     EditText etCrewSalMonthOne;
     @BindView(R.id.et_crew_sal_month_two)
     EditText etCrewSalMonthTwo;
+    @BindView(R.id.et_cust_name)
+    EditText et_cust_name;
+    @BindView(R.id.et_model)
+    EditText et_model;
+    @BindView(R.id.et_dse)
+    EditText et_dse;
 
 
     @BindView(R.id.btn_submit)
@@ -156,12 +162,24 @@ public class InputFragment extends BaseFragment {
     @OnClick(R.id.btn_submit)
     public void submit() {
 
+        saveCustomerAndModel();
+
         calculateValuesOne();
 
         calculateValuesOneTwo();
 
         OutputFragment fragment = OutputFragment.newInstance(bean1, bean2);
         openFragment(fragment);
+
+    }
+
+    private void saveCustomerAndModel() {
+
+        Preferences.writeSharedPreferences(Preferences.KEY_CUSTOMER,et_cust_name.getText().toString());
+
+        Preferences.writeSharedPreferences(Preferences.KEY_MODEL,et_model.getText().toString());
+
+        Preferences.writeSharedPreferences(Preferences.KEY_DSE,et_dse.getText().toString());
 
     }
 

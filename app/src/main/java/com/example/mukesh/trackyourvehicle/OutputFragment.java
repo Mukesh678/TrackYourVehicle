@@ -2,6 +2,8 @@ package com.example.mukesh.trackyourvehicle;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,9 @@ public class OutputFragment extends BaseFragment {
     TextView tvResult1;
     @BindView(R.id.tv_result2)
     TextView tvResult2;
+    @BindView(R.id.tv_result3)
+    TextView tvResult3;
+
 
     private OutputBean bean1, bean2;
 
@@ -79,16 +84,54 @@ public class OutputFragment extends BaseFragment {
             double increasing_in_op_five_year = increasing_in_op*5;
 
 
-            tvResult1.setText("Operating Cost Per Year : "+operating_cost_year_one
-                    +"\nOperating Profit Per Year : "+operating_profit_year_one
-                    +"\nIncreasing In Operating Profit : "+increasing_in_op
-                    +"\nIncreasing In Operating Profit For Five Years : "+increasing_in_op_five_year);
+            Spanned result1= Html.fromHtml("Operating Cost Per Year : "+getColorText(operating_cost_year_one)
+                    +"\nOperating Profit Per Year : "+getColorText(operating_profit_year_one));
+
+            Spanned result2=Html.fromHtml("Operating Cost Per Year : "+getColorText(operating_cost_year_two)
+                    +"\nOperating Profit Per Year : "+getColorText(operating_profit_year_two));
+
+            Spanned result3=Html.fromHtml("Increasing In Operating Profit : "+getColorText(increasing_in_op)
+                    +"\nIncreasing In Operating Profit For Five Years : "+getColorText(increasing_in_op_five_year));
+
+            tvResult1.setText(result1);
 
 
-            tvResult2.setText("Operating Cost Per Year : "+operating_cost_year_two
-                    +"\nOperating Profit Per Year : "+operating_profit_year_two);
+            tvResult2.setText(result2);
+
+            tvResult3.setText(result3);
+
+
+           String body= generateEmailBody();
+
+            EmailUtils.sendEmail(mActivity ,"monarch.modi@tatamotors.com", "BTR Report" , body);
 
         }
+    }
+
+    private String getColorText(double value) {
+
+        return "<font color='#EE0000'>"+value+"</font>";
+    }
+
+    private String generateEmailBody() {
+
+        StringBuilder sb=new StringBuilder();
+
+//        sb.append(getString(R.string.string1)).append(" :"+bean1.getPayload_tons_year());
+
+        sb.append("Customer Name: "+Preferences.getAppPrefString(Preferences.KEY_CUSTOMER))
+        .append("\n")
+        .append("Model No: "+Preferences.getAppPrefString(Preferences.KEY_MODEL))
+        .append("\n")
+        .append("DSE: "+Preferences.getAppPrefString(Preferences.KEY_DSE))
+        .append("\n\n")
+        .append(tvResult1.getText())
+        .append("\n\n")
+        .append(tvResult2.getText())
+        .append("\n\n")
+        .append(tvResult3.getText());
+
+        return sb.toString();
     }
 
 

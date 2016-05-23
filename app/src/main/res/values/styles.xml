@@ -8,6 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="grid_single_style">
+
+        <item name="layout_columnWeight">1</item>
+        <item name="layout_gravity">fill_horizontal|center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:inputType">text</item>
+
+    </style>
 
     <style name="grid_item_style">
 
