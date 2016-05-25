@@ -73,9 +73,9 @@ public class TripCalculate
     }
 
     //8
-    public static double getTripMileage(double total_trip_distance,double trip_distance_load,double mileage_load,double distance_without_load,double mileage_without_load)
+    public static double getTripMileage(double total_trip_distance,double distance_with_load_OJ,double mileage_load_OJ,double distance_with_load_RJ,double mileage_load_RJ)
     {
-        double div= ((trip_distance_load / ((mileage_load==0) ? 1:mileage_load) + (distance_without_load / ((mileage_without_load==0)?1:mileage_without_load))));
+        double div= (distance_with_load_OJ / ((mileage_load_OJ==0) ? 1:mileage_load_OJ)) + (distance_with_load_RJ / ((mileage_load_RJ==0)?1:mileage_load_RJ));
 
         return total_trip_distance / ((div==0)?1:div);
     }

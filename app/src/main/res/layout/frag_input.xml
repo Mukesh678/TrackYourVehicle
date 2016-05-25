@@ -395,27 +395,7 @@
             android:hint="secondHint" />
 
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/grid_text_style"
-            android:text="@string/string16" />
 
-        <EditText
-            android:id="@+id/et_interest_rate_one"
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/grid_item_style"
-            android:hint="firstHint" />
-
-        <EditText
-            android:id="@+id/et_interest_rate_two"
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/grid_item_style"
-            android:hint="secondHint" />
 
 
         <TextView
