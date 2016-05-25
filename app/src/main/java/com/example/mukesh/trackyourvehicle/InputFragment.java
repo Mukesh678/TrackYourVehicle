@@ -162,13 +162,54 @@ public class InputFragment extends BaseFragment {
     @OnClick(R.id.btn_submit)
     public void submit() {
 
+        String firstTruck="Payload in tons :"+etPayloadOne.getText().toString()+"\n"
+                +"OJ Pay load :"+etOJPayOne.getText().toString()+"\n"
+                +"RJ pay load :"+etRJPayOne.getText().toString()+"\n"
+                +"Distance with load OJ :"+etDistanceWithLoadOJOne.getText().toString()+"\n"
+                +"Distance with load RJ :"+etDistanceWithLoadRJOne.getText().toString()+"\n"
+                +"Distance without load :"+etDistanceWithoutLoadOne.getText().toString()+"\n"
+                +"Number of trips per month :"+etTripPerMonthOne.getText().toString()+"\n"
+                +"Operative month :"+etOperativeMonthOne.getText().toString()+"\n"
+                +"Mileage with load OJ :"+etMileageWithLoadOJOne.getText().toString()+"\n"
+                +"Mileage with load RJ :"+etMileageWithLoadRJOne.getText().toString()+"\n"
+                +"Mileage without load :"+etMileageWithoutLoadOne.getText().toString()+"\n"
+                +"Fuel price :"+etFuelPriceOne.getText().toString()+"\n"
+                +"Vehicle price :"+etVehiclePriceOne.getText().toString()+"\n"
+                +"Body build cost :"+etBodyBuildCostOne.getText().toString()+"\n"
+                +"Tenure in month :"+etTenureInMonthOne.getText().toString()+"\n"
+                +"Interest rate :"+etInterestRateOne.getText().toString()+"\n"
+                +"Freight rate per ton per km OJ :"+etFreightRatePerTonPerKmForwardJourneyOne.getText().toString()+"\n"
+                +"Freight rate per ton per km RJ :"+etFreightRatePerTonPerKmReturnJourneyOne.getText().toString()+"\n"
+                +"Maintenance cost per km :"+etMaintenanceCostPerKmOne.getText().toString()+"\n";
+
+
+        String  secondTruck="Payload in tons :"+etPayloadTwo.getText().toString()+"\n"
+                +"OJ Pay load :"+etOJPayTwo.getText().toString()+"\n"
+                +"RJ pay load :"+etRJPayTwo.getText().toString()+"\n"
+                +"Distance with load OJ :"+etDistanceWithLoadOJTwo.getText().toString()+"\n"
+                +"Distance with load RJ :"+etDistanceWithLoadRJTwo.getText().toString()+"\n"
+                +"Distance without load :"+etDistanceWithoutLoadTwo.getText().toString()+"\n"
+                +"Number of trips per month :"+etTripPerMonthTwo.getText().toString()+"\n"
+                +"Operative month :"+etOperativeMonthTwo.getText().toString()+"\n"
+                +"Mileage with load OJ :"+etMileageWithLoadOJTwo.getText().toString()+"\n"
+                +"Mileage with load RJ :"+etMileageWithLoadRJTwo.getText().toString()+"\n"
+                +"Mileage without load :"+etMileageWithoutLoadTwo.getText().toString()+"\n"
+                +"Fuel price :"+etFuelPriceTwo.getText().toString()+"\n"
+                +"Vehicle price :"+etVehiclePriceTwo.getText().toString()+"\n"
+                +"Body build cost :"+etBodyBuildCostTwo.getText().toString()+"\n"
+                +"Tenure in month :"+etTenureInMonthTwo.getText().toString()+"\n"
+                +"Interest rate :"+etInterestRateTwo.getText().toString()+"\n"
+                +"Freight rate per ton per km OJ :"+etFreightRatePerTonPerKmForwardJourneyTwo.getText().toString()+"\n"
+                +"Freight rate per ton per km RJ :"+etFreightRatePerTonPerKmReturnJourneyTwo.getText().toString()+"\n"
+                +"Maintenance cost per km :"+etMaintenanceCostPerKmTwo.getText().toString()+"\n";
+
         saveCustomerAndModel();
 
         calculateValuesOne();
 
         calculateValuesOneTwo();
 
-        OutputFragment fragment = OutputFragment.newInstance(bean1, bean2);
+        OutputFragment fragment = OutputFragment.newInstance(bean1, bean2,firstTruck,secondTruck);
         openFragment(fragment);
 
     }

@@ -19,7 +19,8 @@ public class OutputFragment extends BaseFragment {
 
     public static final String KEY_TRUCK_ONE = "key_truck_one";
     public static final String KEY_TRUCK_TWO = "key_truck_two";
-
+    public static final String KEY_TRUCK_ONE_STRING = "key_truck_one_string";
+    public static final String KEY_TRUCK_TWO_STRING = "key_truck_two_string";
 
     @BindView(R.id.tv_result1)
     TextView tvResult1;
@@ -40,16 +41,20 @@ public class OutputFragment extends BaseFragment {
 
 
     private View view;
+    private String input_truck1,input_truck2;
 
 
-    public static OutputFragment newInstance(OutputBean bean1, OutputBean bean2) {
+    public static OutputFragment newInstance(OutputBean bean1, OutputBean bean2,String firstTruck,String secondTruck) {
         Bundle bundle = new Bundle();
         bundle.putParcelable(OutputFragment.KEY_TRUCK_ONE, bean1);
         bundle.putParcelable(OutputFragment.KEY_TRUCK_TWO, bean2);
+        bundle.putString(OutputFragment.KEY_TRUCK_ONE_STRING, firstTruck);
+        bundle.putString(OutputFragment.KEY_TRUCK_TWO_STRING, secondTruck);
         OutputFragment fragment = new OutputFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
+
 
 
     @Nullable
@@ -61,6 +66,9 @@ public class OutputFragment extends BaseFragment {
 
             bean1 = getArguments().getParcelable(KEY_TRUCK_ONE);
             bean2 = getArguments().getParcelable(KEY_TRUCK_TWO);
+
+            input_truck1=getArguments().getString(KEY_TRUCK_ONE_STRING);
+            input_truck2=getArguments().getString(KEY_TRUCK_TWO_STRING);
 
             showResult();
 
@@ -112,6 +120,12 @@ public class OutputFragment extends BaseFragment {
 
         return "<font color='#EE0000'>"+value+"</font>";
     }
+    private String getColorText(String value) {
+
+        return Html.fromHtml("<font color='#EE0000'>"+value+"</font>").toString();
+    }
+
+
 
     private String generateEmailBody() {
 
@@ -119,15 +133,21 @@ public class OutputFragment extends BaseFragment {
 
 //        sb.append(getString(R.string.string1)).append(" :"+bean1.getPayload_tons_year());
 
-        sb.append("Customer Name: "+Preferences.getAppPrefString(Preferences.KEY_CUSTOMER))
+        sb.append(getColorText("Customer Name: ")+Preferences.getAppPrefString(Preferences.KEY_CUSTOMER))
         .append("\n")
-        .append("Model No: "+Preferences.getAppPrefString(Preferences.KEY_MODEL))
+        .append(getColorText("Model No: ")+Preferences.getAppPrefString(Preferences.KEY_MODEL))
         .append("\n")
-        .append("DSE: "+Preferences.getAppPrefString(Preferences.KEY_DSE))
+        .append(getColorText("DSE: ")+Preferences.getAppPrefString(Preferences.KEY_DSE))
         .append("\n\n")
+        .append(getColorText("For Truck one:")+"\n\n")
+        .append(input_truck1)
         .append(tvResult1.getText())
         .append("\n\n")
+        .append("\n\n")
+        .append(getColorText("For Truck two:")+"\n\n")
+        .append(input_truck2)
         .append(tvResult2.getText())
+        .append("\n\n")
         .append("\n\n")
         .append(tvResult3.getText());
 
