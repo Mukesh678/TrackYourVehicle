@@ -82,10 +82,10 @@ public class InputFragment extends BaseFragment {
     EditText etMileageWithLoadRJOne;
     @BindView(R.id.et_Mileage_With_Load_RJ_two)
     EditText etMileageWithLoadRJTwo;
-    @BindView(R.id.et_Mileage_Without_Load_one)
-    EditText etMileageWithoutLoadOne;
-    @BindView(R.id.et_Mileage_Without_Load_two)
-    EditText etMileageWithoutLoadTwo;
+//    @BindView(R.id.et_Mileage_Without_Load_one)
+//    EditText etMileageWithoutLoadOne;
+//    @BindView(R.id.et_Mileage_Without_Load_two)
+//    EditText etMileageWithoutLoadTwo;
     @BindView(R.id.et_FuelPrice_one)
     EditText etFuelPriceOne;
     @BindView(R.id.et_FuelPrice_two)
@@ -98,10 +98,6 @@ public class InputFragment extends BaseFragment {
     EditText etBodyBuildCostOne;
     @BindView(R.id.et_body_build_cost_two)
     EditText etBodyBuildCostTwo;
-    @BindView(R.id.et_tenure_in_month_one)
-    EditText etTenureInMonthOne;
-    @BindView(R.id.et_tenure_in_month_two)
-    EditText etTenureInMonthTwo;
     @BindView(R.id.et_freight_rate_per_ton_per_km_forward_journey_one)
     EditText etFreightRatePerTonPerKmForwardJourneyOne;
     @BindView(R.id.et_freight_rate_per_ton_per_km_forward_journey_two)
@@ -162,8 +158,6 @@ public class InputFragment extends BaseFragment {
     @OnClick(R.id.btn_submit)
     public void submit() {
 
-
-
            firstTruck="Payload in tons :"+etPayloadOne.getText().toString()+"\n"
                     +"OJ Pay load :"+etOJPayOne.getText().toString()+"\n"
                     +"RJ pay load :"+etRJPayOne.getText().toString()+"\n"
@@ -174,14 +168,14 @@ public class InputFragment extends BaseFragment {
                     +"Operative month :"+etOperativeMonthOne.getText().toString()+"\n"
                     +"Mileage with load OJ :"+etMileageWithLoadOJOne.getText().toString()+"\n"
                     +"Mileage with load RJ :"+etMileageWithLoadRJOne.getText().toString()+"\n"
-                    +"Mileage without load :"+etMileageWithoutLoadOne.getText().toString()+"\n"
+//                    +"Mileage without load :"+etMileageWithoutLoadOne.getText().toString()+"\n"
                     +"Fuel price :"+etFuelPriceOne.getText().toString()+"\n"
-                    +"Vehicle price :"+etVehiclePriceOne.getText().toString()+"\n"
-                    +"Body build cost :"+etBodyBuildCostOne.getText().toString()+"\n"
-                    +"Tenure in month :"+etTenureInMonthOne.getText().toString()+"\n"
+//                    +"Vehicle price :"+etVehiclePriceOne.getText().toString()+"\n"
+//                    +"Body build cost :"+etBodyBuildCostOne.getText().toString()+"\n"
                     +"Freight rate per ton per km OJ :"+etFreightRatePerTonPerKmForwardJourneyOne.getText().toString()+"\n"
                     +"Freight rate per ton per km RJ :"+etFreightRatePerTonPerKmReturnJourneyOne.getText().toString()+"\n"
-                    +"Maintenance cost per km :"+etMaintenanceCostPerKmOne.getText().toString()+"\n";
+                    +"Maintenance cost per km :"+etMaintenanceCostPerKmOne.getText().toString()+"\n"
+                    +"Crew Salary Per Month :"+etCrewSalMonthOne.getText().toString()+"\n";
 
 
             secondTruck="Payload in tons :"+etPayloadTwo.getText().toString()+"\n"
@@ -194,15 +188,14 @@ public class InputFragment extends BaseFragment {
                     +"Operative month :"+etOperativeMonthTwo.getText().toString()+"\n"
                     +"Mileage with load OJ :"+etMileageWithLoadOJTwo.getText().toString()+"\n"
                     +"Mileage with load RJ :"+etMileageWithLoadRJTwo.getText().toString()+"\n"
-                    +"Mileage without load :"+etMileageWithoutLoadTwo.getText().toString()+"\n"
+//                    +"Mileage without load :"+etMileageWithoutLoadTwo.getText().toString()+"\n"
                     +"Fuel price :"+etFuelPriceTwo.getText().toString()+"\n"
-                    +"Vehicle price :"+etVehiclePriceTwo.getText().toString()+"\n"
-                    +"Body build cost :"+etBodyBuildCostTwo.getText().toString()+"\n"
-                    +"Tenure in month :"+etTenureInMonthTwo.getText().toString()+"\n"
+//                    +"Vehicle price :"+etVehiclePriceTwo.getText().toString()+"\n"
+//                    +"Body build cost :"+etBodyBuildCostTwo.getText().toString()+"\n"
                     +"Freight rate per ton per km OJ :"+etFreightRatePerTonPerKmForwardJourneyTwo.getText().toString()+"\n"
                     +"Freight rate per ton per km RJ :"+etFreightRatePerTonPerKmReturnJourneyTwo.getText().toString()+"\n"
-                    +"Maintenance cost per km :"+etMaintenanceCostPerKmTwo.getText().toString()+"\n";
-
+                    +"Maintenance cost per km :"+etMaintenanceCostPerKmTwo.getText().toString()+"\n"
+                    +"Crew Salary Per Month :"+etCrewSalMonthTwo.getText().toString()+"\n";
             saveCustomerAndModel();
 
             calculateValuesOne();
@@ -211,18 +204,18 @@ public class InputFragment extends BaseFragment {
 
             openResultScreen();
 
-
     }
 
     private void openResultScreen() {
+
         if(!novalue)
         {
-
             OutputFragment fragment = OutputFragment.newInstance(bean1, bean2,firstTruck,secondTruck);
             openFragment(fragment);
         }
         else
             Toast.makeText(mActivity,"Please enter some values..",Toast.LENGTH_SHORT).show();
+
     }
 
     private void saveCustomerAndModel() {
@@ -306,7 +299,8 @@ public class InputFragment extends BaseFragment {
         bean1.setTotal_tons_km_year(TripCalculate.getTotalTonKmPerYear(getNumber(etOJPayOne), getNumber(etDistanceWithLoadOJOne), getNumber(etRJPayOne), getNumber(etDistanceWithLoadRJOne), getNumber(etTripPerMonthOne), getNumber(etOperativeMonthOne)));
         bean1.setTotal_freight_earned_year(TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyOne), getNumber(etOJPayOne), getNumber(etDistanceWithLoadOJOne), getNumber(etFreightRatePerTonPerKmReturnJourneyOne), getNumber(etRJPayOne), getNumber(etDistanceWithLoadRJOne), getNumber(etTripPerMonthOne) * getNumber(etOperativeMonthOne)));
 
-        double initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostOne),getNumber(etVehiclePriceOne));
+        double initial_cost = 0;
+//        double initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostOne),getNumber(etVehiclePriceOne));
         double crew_salary_year = TripCalculate.getCrewSalaryYear(getNumber(etOperativeMonthOne),getNumber(etCrewSalMonthOne));
         double taxes=initial_cost*0.04;
         double admin_expenses= initial_cost*0.01;
@@ -353,7 +347,8 @@ public class InputFragment extends BaseFragment {
 
         bean2.setTotal_freight_earned_year(TripCalculate.getTotalFreightEarnedPerYear(getNumber(etFreightRatePerTonPerKmForwardJourneyTwo), getNumber(etOJPayTwo), getNumber(etDistanceWithLoadOJTwo), getNumber(etFreightRatePerTonPerKmReturnJourneyTwo), getNumber(etRJPayTwo), getNumber(etDistanceWithLoadRJTwo), getNumber(etTripPerMonthTwo) * getNumber(etOperativeMonthTwo)));
 
-        double initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostTwo),getNumber(etVehiclePriceTwo));
+        double initial_cost = 0;
+//        double initial_cost = TripCalculate.getInitialCost(getNumber(etBodyBuildCostTwo),getNumber(etVehiclePriceTwo));
         double crew_salary_year = TripCalculate.getCrewSalaryYear(getNumber(etOperativeMonthTwo),getNumber(etCrewSalMonthTwo));
         double taxes= initial_cost*0.04;
         double admin_expenses= initial_cost*0.01;

@@ -284,6 +284,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             style="@style/grid_text_style"
+            android:visibility="gone"
             android:text="@string/string11" />
 
         <EditText
@@ -292,6 +293,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             style="@style/grid_item_style"
+            android:visibility="gone"
             android:hint="firstHint" />
 
         <EditText
@@ -300,6 +302,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             style="@style/grid_item_style"
+            android:visibility="gone"
             android:hint="secondHint" />
 
 
@@ -330,10 +333,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             style="@style/grid_text_style"
+            android:visibility="gone"
             android:text="@string/string13" />
 
         <EditText
             android:id="@+id/et_VehiclePrice_one"
+            android:visibility="gone"
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -342,6 +347,7 @@
 
         <EditText
             android:id="@+id/et_VehiclePrice_two"
+            android:visibility="gone"
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -351,12 +357,15 @@
 
         <TextView
             android:layout_width="0dp"
+            android:visibility="gone"
+
             android:layout_height="wrap_content"
             style="@style/grid_text_style"
             android:text="@string/string14" />
 
         <EditText
             android:id="@+id/et_body_build_cost_one"
+            android:visibility="gone"
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -365,37 +374,12 @@
 
         <EditText
             android:id="@+id/et_body_build_cost_two"
+            android:visibility="gone"
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             style="@style/grid_item_style"
             android:hint="secondHint" />
-
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/grid_text_style"
-            android:text="@string/string15" />
-
-        <EditText
-            android:id="@+id/et_tenure_in_month_one"
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/grid_item_style"
-            android:hint="firstHint" />
-
-        <EditText
-            android:id="@+id/et_tenure_in_month_two"
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/grid_item_style"
-            android:hint="secondHint" />
-
-
-
 
 
         <TextView

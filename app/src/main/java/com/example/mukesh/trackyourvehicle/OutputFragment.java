@@ -2,6 +2,7 @@ package com.example.mukesh.trackyourvehicle;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by ViRus on 5/9/2016.
@@ -28,6 +30,8 @@ public class OutputFragment extends BaseFragment {
     TextView tvResult2;
     @BindView(R.id.tv_result3)
     TextView tvResult3;
+    @BindView(R.id.btn_email)
+    FloatingActionButton btn_email;
 
 
     private OutputBean bean1, bean2;
@@ -60,7 +64,8 @@ public class OutputFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (view == null) {
+        if (view == null)
+        {
             view = inflater.inflate(R.layout.frag_output, container, false);
             ButterKnife.bind(this, view);
 
@@ -76,6 +81,15 @@ public class OutputFragment extends BaseFragment {
 
         ButterKnife.bind(this, view);
         return view;
+    }
+
+
+    @OnClick(R.id.btn_email)
+    public void emailResult()
+    {
+        String body= generateEmailBody();
+
+        EmailUtils.sendEmail(mActivity ,"monarch.modi@tatamotors.com", "BTR Report" , body);
     }
 
     private void showResult() {
@@ -109,9 +123,6 @@ public class OutputFragment extends BaseFragment {
             tvResult3.setText(result3);
 
 
-           String body= generateEmailBody();
-
-            EmailUtils.sendEmail(mActivity ,"monarch.modi@tatamotors.com", "BTR Report" , body);
 
         }
     }
@@ -120,12 +131,11 @@ public class OutputFragment extends BaseFragment {
 
         return "<font color='#EE0000'>"+value+"</font>";
     }
+
     private String getColorText(String value) {
 
         return Html.fromHtml("<font color='#EE0000'>"+value+"</font>").toString();
     }
-
-
 
     private String generateEmailBody() {
 

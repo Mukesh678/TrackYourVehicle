@@ -13,12 +13,14 @@ public class EmailUtils
     {
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{to});
+        i.putExtra(Intent.EXTRA_BCC  , new String[]{to});
         i.putExtra(Intent.EXTRA_SUBJECT, sub);
         i.putExtra(Intent.EXTRA_TEXT   , body);
-        try {
+        try
+        {
             c.startActivity(Intent.createChooser(i, "Send mail..."));
-        } catch (android.content.ActivityNotFoundException ex) {
+        } catch (android.content.ActivityNotFoundException ex)
+        {
             Toast.makeText(c, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
         }
     }

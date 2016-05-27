@@ -47,7 +47,8 @@ public abstract class FragmentOrganizer {
     protected boolean isFragmentOpen(Fragment fragment, boolean useArgs){
         String fragmentTag = createFragmentTag(fragment, useArgs);
 
-        if (fragmentManager.getBackStackEntryCount() != 0) {
+        if (fragmentManager.getBackStackEntryCount() != 0)
+        {
             String name = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
 
             if(!useArgs)
@@ -84,6 +85,7 @@ public abstract class FragmentOrganizer {
         transaction.addToBackStack(fragmentTag).commit();
 
     }
+
     public void openFragmentWithTransition(Fragment fragmentCurrent, Fragment fragmentNext, View sharedElement) {
         if(isFragmentOpen(fragmentNext))
             return;
